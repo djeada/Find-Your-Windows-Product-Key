@@ -1,6 +1,7 @@
 import winreg
+import tkinter as tk
 
-def DecodeKey(key):
+def decodeKey(key):
     chars = 'BCDFGHJKMPQRTVWXY2346789'
     result = ''
     offset = 52
@@ -33,4 +34,15 @@ def getProductKey():
     result, type = winreg.QueryValueEx(key, value)
     return list(result)
 
-print(DecodeKey(getProductKey()))
+def gui():
+    root = tk.Tk()
+    root.configure(background='white')
+    root.geometry('400x100')
+    w = tk.Text(root, height=1, borderwidth=0, font=("Helvetica", 16), background='white')
+    w.insert(1.0,decodeKey(getProductKey()))
+    w.configure(state="disabled")
+    w.configure(bg=root.cget('bg'), relief="flat")
+    w.place(x = 20, y = 35)
+    root.mainloop()
+
+gui()
