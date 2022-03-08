@@ -33,8 +33,8 @@ class Windows10ProductKeyDecoder(ProductKeyDecoder):
         """
         Returns the product key of the current Windows version.
         """
-        path = 'SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform'
-        value = 'BackupProductKeyDefault'
+        path = "SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform"
+        value = "BackupProductKeyDefault"
         key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, path)
         result, _ = winreg.QueryValueEx(key, value)
         return list(result)
@@ -55,8 +55,8 @@ class Windows8ProductKeyDecoder(ProductKeyDecoder):
         """
         Returns the product key of the current Windows version.
         """
-        path = 'SOFTWARE\Microsoft\Windows NT\CurrentVersion'
-        value = 'DigitalProductID'
+        path = "SOFTWARE\Microsoft\Windows NT\CurrentVersion"
+        value = "DigitalProductID"
         key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, path)
         result, type = winreg.QueryValueEx(key, value)
         return self._decode_product_key(list(result))
@@ -65,8 +65,8 @@ class Windows8ProductKeyDecoder(ProductKeyDecoder):
         """
         Decodes the product key.
         """
-        chars = 'BCDFGHJKMPQRTVWXY2346789'
-        result = ''
+        chars = "BCDFGHJKMPQRTVWXY2346789"
+        result = ""
         offset = 52
 
         for i in range(24, -1, -1):
@@ -82,5 +82,5 @@ class Windows8ProductKeyDecoder(ProductKeyDecoder):
             result = chars[temp] + result
 
         for i in range(5, len(result), 6):
-            result = result[:i] + '-' + result[i:]
+            result = result[:i] + "-" + result[i:]
         return result
