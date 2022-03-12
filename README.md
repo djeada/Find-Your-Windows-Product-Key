@@ -11,13 +11,13 @@ The purpose of this script is to provide a simple and universal way to find your
 
 ## Installation
 
-It is advisable to use virtualenv to install the program.
+If you want to execute the script from the source code, you should clone the repository: 
 
     git clone https://github.com/djeada/Find-your-windows-product-key.git
-    cd find-your-windows-product-key
-    virtualenv venv
-    source venv/bin/activate
-    pip install -r requirements.txt
+
+Alternatively, you may obtain the compiled executable from the following link:
+
+    https://github.com/djeada/Find-your-windows-product-key/releases/tag/v0.1
 
 ## Usage
 
